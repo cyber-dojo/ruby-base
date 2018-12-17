@@ -1,0 +1,9 @@
+
+version: '2.2'
+
+services:
+
+  ruby-base:
+    build:
+      context: .
+    image: cyberdojo/ruby-base
