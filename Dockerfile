@@ -1,16 +1,15 @@
-FROM  alpine:3.8
+FROM alpine:latest
 LABEL maintainer=jon@jaggersoft.com
 
-RUN apk --update --no-cache add \
+RUN apk --update --upgrade --no-cache add \
     bash \
-    ruby-bundler \    
+    ruby-bundler \
     ruby-dev
 
-ARG             HOME=/app
-COPY Gemfile  ${HOME}/
-WORKDIR       ${HOME}
+WORKDIR /app
+COPY Gemfile .
 
-RUN apk --update add --virtual build-dependencies build-base \
+RUN apk --update --upgrade add --virtual build-dependencies build-base \
   && echo "gem: --no-rdoc --no-ri" > ~/.gemrc \
   && bundle config --global silence_root_warning 1 \
   && bundle install \
