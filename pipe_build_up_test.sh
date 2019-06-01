@@ -1,8 +1,7 @@
 #!/bin/bash
 set -e
 
-readonly ROOT_DIR="$( cd "$( dirname "${0}" )" && pwd )"
-readonly MY_NAME="${ROOT_DIR##*/}"
-readonly SH_DIR="${ROOT_DIR}/sh"
+readonly SH_DIR="$( cd "$( dirname "${0}" )" && pwd )/sh"
+readonly MY_NAME=ruby-base
 
 "${SH_DIR}/build_docker_images.sh"
