@@ -37,8 +37,7 @@ jobs:
             TRIGGER=trigger-dependent-repos.sh
             curl -O --fail ${CIRCLECI_SCRIPT_DIR}/${TRIGGER}
             chmod 700 ./${TRIGGER}
-            # ./${TRIGGER} \
-              rack-base
+            # ./${TRIGGER} rack-base
 
 workflows:
   version: 2
