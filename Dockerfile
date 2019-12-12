@@ -1,6 +1,9 @@
 FROM alpine:latest
 LABEL maintainer=jon@jaggersoft.com
 
+ARG SHA
+ENV SHA=${SHA}
+
 RUN apk --update --upgrade --no-cache add \
     bash \
     ruby-bundler \

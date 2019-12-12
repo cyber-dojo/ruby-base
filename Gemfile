@@ -1,4 +1,5 @@
 source 'https://rubygems.org'
 
-gem 'simplecov'
 gem 'minitest'
+gem 'ruby-prof'
+gem 'simplecov'
