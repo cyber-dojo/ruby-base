@@ -1,9 +1,6 @@
 FROM alpine:latest
 LABEL maintainer=jon@jaggersoft.com
 
-ARG SHA
-ENV SHA=${SHA}
-
 RUN apk --update --upgrade --no-cache add \
     bash \
     ruby-bundler \
@@ -19,3 +16,6 @@ RUN apk --update --upgrade add --virtual build-dependencies build-base \
   && gem clean \
   && apk del build-dependencies build-base \
   && rm -vrf /var/cache/apk/*
+
+ARG COMMIT_SHA
+ENV SHA=${COMMIT_SHA}
