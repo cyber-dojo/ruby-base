@@ -92,7 +92,7 @@ on_ci_trigger_dependent_images()
     return
   fi
   echo 'on CI so triggering dependent images'
-  #...
+  curl_trigger_script
   local -r from_org=cyber-dojo
   local -r from_repo=ruby-base
   local -r from_sha="$(git_commit_sha)"
