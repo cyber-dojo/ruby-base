@@ -1,5 +1,6 @@
 source 'https://rubygems.org'
 
+gem 'json'
 gem 'minitest'
 gem 'ruby-prof'
 gem 'simplecov'
