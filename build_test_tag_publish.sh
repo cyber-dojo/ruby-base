@@ -19,9 +19,15 @@ git_commit_sha()
 }
 
 # - - - - - - - - - - - - - - - - - - - - - - - -
+my_name()
+{
+  echo ruby-base
+}
+
+# - - - - - - - - - - - - - - - - - - - - - - - -
 image_name()
 {
-  echo cyberdojo/ruby-base
+  echo "cyberdojo/$(my_name)"
 }
 
 # - - - - - - - - - - - - - - - - - - - - - - - -
@@ -94,7 +100,7 @@ on_ci_trigger_dependent_images()
   echo 'on CI so triggering dependent images'
   curl_trigger_script
   local -r from_org=cyber-dojo
-  local -r from_repo=ruby-base
+  local -r from_repo="$(my_name)"
   local -r from_sha="$(git_commit_sha)"
   local -r to_org=cyber-dojo
   local -r to_repos="rack-base"
