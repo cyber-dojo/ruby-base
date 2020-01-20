@@ -1,6 +1,6 @@
 #!/bin/bash -Eeu
 
-readonly SH_DIR="$( cd "$( dirname "${0}" )/sh" && pwd )"
+readonly ROOT_DIR="$( cd "$( dirname "${0}" )" && pwd )"
 readonly TMP_DIR="$(mktemp -d /tmp/ruby-base.XXXXXXX)"
 remove_tmp_dir() { rm -rf "${TMP_DIR}" > /dev/null; }
 trap remove_tmp_dir INT EXIT
@@ -11,7 +11,7 @@ build_docker_images()
   docker build \
     --build-arg COMMIT_SHA="$(git_commit_sha)" \
     --tag "$(image_name)" \
-    "${SH_DIR}/../app"
+    "${ROOT_DIR}/app"
 }
 
 # - - - - - - - - - - - - - - - - - - - - - - - -
@@ -26,16 +26,6 @@ assert_equal()
     echo "ERROR: unexpected ${name} inside image ${IMAGE}:latest"
     exit 42
   fi
-}
-
-# - - - - - - - - - - - - - - - - - - - - - - - -
-bare_build_only()
-{
-  set +u
-  [ -n "${BARE_BUILD_ONLY}" ]
-  local -r result=$?
-  set -u
-  [ "${result}" == '0' ]
 }
 
 # - - - - - - - - - - - - - - - - - - - - - - - -
@@ -57,7 +47,7 @@ image_name()
 # - - - - - - - - - - - - - - - - - - - - - - - -
 git_commit_sha()
 {
-  echo $(cd "${SH_DIR}/.." && git rev-parse HEAD)
+  echo $(cd "${ROOT_DIR}" && git rev-parse HEAD)
 }
 
 # - - - - - - - - - - - - - - - - - - - - - - - -
@@ -147,6 +137,5 @@ on_ci()
 build_docker_images
 assert_equal SHA "$(git_commit_sha)" "$(image_sha)"
 tag_image
-if bare_build_only; then exit 0; fi
 on_ci_publish_tagged_image
 on_ci_trigger_dependent_images
