@@ -1,6 +1,6 @@
 FROM alpine:3.10
-# 3.10 gives Ruby 2.5.7p206
-# 3.11 gives Ruby 2.6.5p114 which has a coverage bug (found in the differ repo)
+# 3.10 gives simplecov 0.17.1, Ruby 2.5.7p206
+# 3.11 gives simplecov 0.17.1, Ruby 2.6.5p114 which has a coverage bug (found in the differ repo)
 # See https://github.com/colszowka/simplecov/issues/802
 LABEL maintainer=jon@jaggersoft.com
 
