@@ -4,7 +4,7 @@ on_ci()
 {
   set +u
   [ -n "${CIRCLECI}" ]
-  local -r result=$0
+  local -r result=$?
   set -u
   [ "${result}" == '0' ]
 }
