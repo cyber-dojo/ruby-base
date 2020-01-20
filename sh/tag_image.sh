@@ -5,6 +5,7 @@ source "$(sh_dir)/image_name.sh"
 source "$(sh_dir)/image_tag.sh"
 source "$(sh_dir)/git_commit_sha.sh"
 
+# - - - - - - - - - - - - - - - - - - - - - - - -
 tag_image()
 {
   local -r image="$(image_name)"
@@ -13,3 +14,6 @@ tag_image()
   echo "$(git_commit_sha)"
   echo "${tag}"
 }
+
+# - - - - - - - - - - - - - - - - - - - - - - - -
+tag_image
