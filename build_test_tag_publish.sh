@@ -1,6 +1,6 @@
 #!/bin/bash -Eeu
 
-readonly ROOT_DIR="$( cd "$( dirname "${0}" )" && pwd )"
+readonly ROOT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 readonly TMP_DIR="$(mktemp -d /tmp/ruby-base.XXXXXXX)"
 remove_tmp_dir() { rm -rf "${TMP_DIR}" > /dev/null; }
 trap remove_tmp_dir INT EXIT
