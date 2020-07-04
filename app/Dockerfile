@@ -2,7 +2,8 @@ FROM ruby:alpine
 LABEL maintainer=jon@jaggersoft.com
 
 RUN apk --update --upgrade --no-cache add \
-    bash
+    bash \
+    tini
 
 WORKDIR /app
 COPY Gemfile .
