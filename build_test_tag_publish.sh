@@ -23,7 +23,7 @@ assert_equal()
   echo "expected: ${name}='${expected}'"
   echo "  actual: ${name}='${actual}'"
   if [ "${expected}" != "${actual}" ]; then
-    echo "ERROR: unexpected ${name} inside image ${IMAGE}:latest"
+    echo "ERROR: unexpected ${name} inside image $(image_name):latest"
     exit 42
   fi
 }
@@ -60,7 +60,7 @@ image_tag()
 # - - - - - - - - - - - - - - - - - - - - - - - -
 image_sha()
 {
-  docker run --rm $(image_name):latest sh -c 'echo ${SHA}'
+  docker run --entrypoint="" --rm $(image_name):latest sh -c 'echo ${SHA}'
 }
 
 # - - - - - - - - - - - - - - - - - - - - - - - -
@@ -83,11 +83,7 @@ on_ci_publish_tagged_image()
 # - - - - - - - - - - - - - - - - - - - - - - - -
 on_ci()
 {
-  set +u
-  [ -n "${CIRCLECI}" ]
-  local -r result=$?
-  set -u
-  [ "${result}" == '0' ]
+  [ -n "${CIRCLECI:-}" ]
 }
 
 # - - - - - - - - - - - - - - - - - - - - - - - -
