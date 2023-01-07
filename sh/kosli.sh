@@ -67,20 +67,6 @@ artifact_name()
 }
 
 # - - - - - - - - - - - - - - - - - - -
-repo_root()
-{
-  # Functions in this file are called after sourcing this
-  # file so repo_root() cannot use the path of this script.
-  git rev-parse --show-toplevel
-}
-
-# - - - - - - - - - - - - - - - - - - - - - - - -
-on_ci()
-{
-  [ "${CI:-}" == true ]
-}
-
-# - - - - - - - - - - - - - - - - - - -
 on_ci_kosli_declare_pipeline()
 {
   if on_ci ; then
