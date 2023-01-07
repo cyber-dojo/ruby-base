@@ -1,9 +1,11 @@
-#!/bin/bash -Eeu
+#!/usr/bin/env bash
+set -Eeu
 
-readonly ROOT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-readonly TMP_DIR="$(mktemp -d /tmp/ruby-base.XXXXXXX)"
-remove_tmp_dir() { rm -rf "${TMP_DIR}" > /dev/null; }
-trap remove_tmp_dir INT EXIT
+
+export ROOT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+export SH_DIR="${ROOT_DIR}/sh"
+
+source "${SH_DIR}/kosli.sh"
 
 # - - - - - - - - - - - - - - - - - - - - - - - -
 build_docker_images()
@@ -88,3 +90,6 @@ build_docker_images
 assert_equal SHA "$(git_commit_sha)" "$(image_sha)"
 tag_image
 on_ci_publish_tagged_image
+on_ci_kosli_declare_pipeline
+on_ci_kosli_report_artifact
+on_ci_kosli_report_synk_evidence
