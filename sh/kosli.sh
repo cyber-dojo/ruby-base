@@ -36,11 +36,6 @@ kosli_report_synk_evidence()
 {
   local -r hostname="${1}"
 
-  snyk container test "$(artifact_name)" \
-    --file="$(repo_root)/app/Dockerfile" \
-    --json-file-output=snyk.json \
-    --policy-path=.snyk
-
   kosli pipeline artifact report evidence snyk \
     "$(artifact_name)" \
       --artifact-type docker \
@@ -63,7 +58,7 @@ kosli_assert_artifact()
 # - - - - - - - - - - - - - - - - - - -
 artifact_name()
 {
-  echo cyber-dojo/ruby-base
+  echo "cyber-dojo/ruby-base:$(image_tag)"
 }
 
 # - - - - - - - - - - - - - - - - - - -
@@ -88,6 +83,12 @@ on_ci_kosli_report_artifact()
 on_ci_kosli_report_synk_evidence()
 {
   if on_ci ; then
+
+    snyk container test "$(artifact_name)" \
+      --file="$(repo_root)/app/Dockerfile" \
+      --json-file-output=snyk.json \
+      --policy-path=.snyk
+
     kosli_report_synk_evidence "${KOSLI_HOST_STAGING}"
     #kosli_report_snyk_evidence "${KOSLI_HOST_PRODUCTION}"
   fi
