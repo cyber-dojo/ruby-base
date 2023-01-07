@@ -1,3 +1,4 @@
+[![Github Action (main)](https://github.com/cyber-dojo/ruby-base/actions/workflows/main.yml/badge.svg)](https://github.com/cyber-dojo/ruby-base/actions)
 
 # cyberdojo/ruby-base docker image
 
