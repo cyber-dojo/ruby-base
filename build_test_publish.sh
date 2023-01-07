@@ -9,6 +9,7 @@ source "${SH_DIR}/kosli.sh"
 source "${SH_DIR}/lib.sh"
 
 # - - - - - - - - - - - - - - - - - - - - - - - -
+set -x
 build_docker_images
 assert_equal SHA "$(git_commit_sha)" "$(image_sha)"
 tag_image
