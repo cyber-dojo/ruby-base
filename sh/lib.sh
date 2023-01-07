@@ -2,12 +2,12 @@
 set -Eeu
 
 # - - - - - - - - - - - - - - - - - - - - - - - -
-build_docker_images()
+build_docker_image()
 {
   docker build \
     --build-arg COMMIT_SHA="$(git_commit_sha)" \
     --tag "$(image_name)" \
-    "$(repo_root)/app"
+    "${REPO_ROOT}/app"
 }
 
 # - - - - - - - - - - - - - - - - - - - - - - - -
@@ -22,12 +22,6 @@ assert_equal()
     echo "ERROR: unexpected ${name} inside image $(image_name):latest"
     exit 42
   fi
-}
-
-# - - - - - - - - - - - - - - - - - - -
-repo_root()
-{
-  git rev-parse --show-toplevel
 }
 
 # - - - - - - - - - - - - - - - - - - - - - - - -
@@ -51,7 +45,7 @@ image_name()
 # - - - - - - - - - - - - - - - - - - - - - - - -
 git_commit_sha()
 {
-  echo $(cd "$(repo_root)" && git rev-parse HEAD)
+  echo $(cd "${REPO_ROOT}" && git rev-parse HEAD)
 }
 
 # - - - - - - - - - - - - - - - - - - - - - - - -

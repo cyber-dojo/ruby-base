@@ -27,7 +27,7 @@ kosli_report_artifact_creation()
   kosli pipeline artifact report creation \
     "$(artifact_name)" \
       --artifact-type docker \
-      --repo-root $(repo_root) \
+      --repo-root "${REPO_ROOT}" \
       --host "${hostname}"
 }
 
@@ -58,13 +58,14 @@ kosli_assert_artifact()
 # - - - - - - - - - - - - - - - - - - -
 artifact_name()
 {
-  echo "cyberdojo/ruby-base:$(image_tag)"
+  echo "$(image_name):$(image_tag)"
 }
 
 # - - - - - - - - - - - - - - - - - - -
 on_ci_kosli_declare_pipeline()
 {
-  if on_ci ; then
+  if on_ci
+  then
     kosli_declare_pipeline "${KOSLI_HOST_STAGING}"
     kosli_declare_pipeline "${KOSLI_HOST_PRODUCTION}"
   fi
@@ -73,7 +74,8 @@ on_ci_kosli_declare_pipeline()
 # - - - - - - - - - - - - - - - - - - -
 on_ci_kosli_report_artifact()
 {
-  if on_ci ; then
+  if on_ci
+  then
     kosli_report_artifact_creation "${KOSLI_HOST_STAGING}"
     kosli_report_artifact_creation "${KOSLI_HOST_PRODUCTION}"
   fi
@@ -82,8 +84,8 @@ on_ci_kosli_report_artifact()
 # - - - - - - - - - - - - - - - - - - -
 on_ci_kosli_report_synk_evidence()
 {
-  if on_ci ; then
-
+  if on_ci
+  then
     snyk container test "$(artifact_name)" \
       --file="$(repo_root)/app/Dockerfile" \
       --json-file-output=snyk.json \
@@ -97,7 +99,8 @@ on_ci_kosli_report_synk_evidence()
 # - - - - - - - - - - - - - - - - - - -
 on_ci_kosli_assert_artifact()
 {
-  if on_ci ; then
+  if on_ci
+  then
     kosli_assert_artifact "${KOSLI_HOST_STAGING}"
     kosli_assert_artifact "${KOSLI_HOST_PRODUCTION}"
   fi
