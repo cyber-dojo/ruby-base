@@ -58,7 +58,7 @@ kosli_assert_artifact()
 # - - - - - - - - - - - - - - - - - - -
 artifact_name()
 {
-  echo "cyber-dojo/ruby-base:$(image_tag)"
+  echo "cyberdojo/ruby-base:$(image_tag)"
 }
 
 # - - - - - - - - - - - - - - - - - - -
