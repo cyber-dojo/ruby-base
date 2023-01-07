@@ -66,7 +66,7 @@ on_ci_kosli_declare_pipeline()
 {
   if on_ci ; then
     kosli_declare_pipeline "${KOSLI_HOST_STAGING}"
-    #kosli_declare_pipeline "${KOSLI_HOST_PRODUCTION}"
+    kosli_declare_pipeline "${KOSLI_HOST_PRODUCTION}"
   fi
 }
 
@@ -75,7 +75,7 @@ on_ci_kosli_report_artifact()
 {
   if on_ci ; then
     kosli_report_artifact_creation "${KOSLI_HOST_STAGING}"
-    #kosli_report_artifact_creation "${KOSLI_HOST_PRODUCTION}"
+    kosli_report_artifact_creation "${KOSLI_HOST_PRODUCTION}"
   fi
 }
 
@@ -90,7 +90,7 @@ on_ci_kosli_report_synk_evidence()
       --policy-path=.snyk
 
     kosli_report_synk_evidence "${KOSLI_HOST_STAGING}"
-    #kosli_report_snyk_evidence "${KOSLI_HOST_PRODUCTION}"
+    kosli_report_snyk_evidence "${KOSLI_HOST_PRODUCTION}"
   fi
 }
 
@@ -99,7 +99,7 @@ on_ci_kosli_assert_artifact()
 {
   if on_ci ; then
     kosli_assert_artifact "${KOSLI_HOST_STAGING}"
-    #kosli_assert_artifact "${KOSLI_HOST_PRODUCTION}"
+    kosli_assert_artifact "${KOSLI_HOST_PRODUCTION}"
   fi
 }
 
