@@ -1,6 +1,4 @@
 
-[![CircleCI](https://circleci.com/gh/cyber-dojo/ruby-base.svg?style=svg)](https://circleci.com/gh/cyber-dojo/ruby-base)
-
 # cyberdojo/ruby-base docker image
 
 - A base docker image for [cyber-dojo](http://cyber-dojo.org) ruby-based services.
