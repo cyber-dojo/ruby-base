@@ -7,7 +7,7 @@ build_docker_image()
   docker build \
     --build-arg COMMIT_SHA="$(git_commit_sha)" \
     --tag "$(image_name)" \
-    "${REPO_ROOT}/app"
+    "${REPO_ROOT}"
 }
 
 # - - - - - - - - - - - - - - - - - - - - - - - -
