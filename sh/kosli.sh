@@ -82,7 +82,7 @@ on_ci_kosli_report_artifact()
 }
 
 # - - - - - - - - - - - - - - - - - - -
-on_ci_kosli_report_snkk_evidence()
+on_ci_kosli_report_snyk_evidence()
 {
   if on_ci
   then
