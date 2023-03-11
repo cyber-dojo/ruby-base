@@ -5,9 +5,6 @@ RUN apk --update --upgrade --no-cache add \
     bash \
     tini
 
-# Fix for snyk problem https://security.snyk.io/vuln/SNYK-ALPINE317-OPENSSL-3188632
-RUN apk upgrade libcrypto3 libssl3
-
 WORKDIR /app
 COPY Gemfile .
 
