@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 set -Eeu
 
-# KOSLI_OWNER is set in CI
+# KOSLI_ORG is set in CI
 # KOSLI_API_TOKEN is set in CI
 # KOSLI_FLOW is set in CI
 # KOSLI_HOST_STAGING is set in CI
@@ -61,8 +61,7 @@ artifact_name()
 # - - - - - - - - - - - - - - - - - - -
 on_ci_kosli_create_flow()
 {
-  if on_ci
-  then
+  if on_ci; then
     kosli_create_flow "${KOSLI_HOST_STAGING}"
     kosli_create_flow "${KOSLI_HOST_PRODUCTION}"
   fi
@@ -71,8 +70,7 @@ on_ci_kosli_create_flow()
 # - - - - - - - - - - - - - - - - - - -
 on_ci_kosli_report_artifact()
 {
-  if on_ci
-  then
+  if on_ci; then
     kosli_report_artifact_creation "${KOSLI_HOST_STAGING}"
     kosli_report_artifact_creation "${KOSLI_HOST_PRODUCTION}"
   fi
@@ -81,8 +79,7 @@ on_ci_kosli_report_artifact()
 # - - - - - - - - - - - - - - - - - - -
 on_ci_kosli_report_snyk_evidence()
 {
-  if on_ci
-  then
+  if on_ci; then
     snyk container test "$(artifact_name)" \
       --file="$(repo_root)/app/Dockerfile" \
       --json-file-output=snyk.json \
@@ -96,8 +93,7 @@ on_ci_kosli_report_snyk_evidence()
 # - - - - - - - - - - - - - - - - - - -
 on_ci_kosli_assert_artifact()
 {
-  if on_ci
-  then
+  if on_ci; then
     kosli_assert_artifact "${KOSLI_HOST_STAGING}"
     kosli_assert_artifact "${KOSLI_HOST_PRODUCTION}"
   fi
