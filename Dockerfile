@@ -1,4 +1,4 @@
-FROM ruby:alpine
+FROM ruby:3.2.2-alpine3.17
 LABEL maintainer=jon@jaggersoft.com
 
 RUN apk --update --upgrade --no-cache add \
