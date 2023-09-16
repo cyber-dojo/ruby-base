@@ -1,11 +1,13 @@
 #!/usr/bin/env bash
 set -Eeu
 
+export KOSLI_FLOW=ruby-base
+
 # KOSLI_ORG is set in CI
 # KOSLI_API_TOKEN is set in CI
-# KOSLI_FLOW is set in CI
 # KOSLI_HOST_STAGING is set in CI
 # KOSLI_HOST_PRODUCTION is set in CI
+# SNYK_TOKEN is set in CI
 
 # - - - - - - - - - - - - - - - - - - -
 kosli_create_flow()
