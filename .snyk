@@ -4,7 +4,7 @@ version: v1.25.0
 ignore:
   SNYK-ALPINE318-PROCPSNG-5877704:
     - '*':
-        reason: Turn off medium vulnerability while investigating
-        expires: 2023-10-14T10:31:22.276Z
-        created: 2023-09-14T10:31:22.281Z
+        reason: Wait for fix in base image
+        expires: 2023-10-16T04:33:51.513Z
+        created: 2023-09-16T04:33:51.517Z
 patch: {}

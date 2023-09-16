@@ -80,10 +80,11 @@ on_ci_kosli_report_artifact()
 on_ci_kosli_report_snyk_evidence()
 {
   if on_ci; then
+    set +e
     snyk container test "$(artifact_name)" \
-      --file="$(repo_root)/app/Dockerfile" \
       --json-file-output=snyk.json \
       --policy-path=.snyk
+    set -e
 
     kosli_report_snyk_evidence "${KOSLI_HOST_STAGING}"
     kosli_report_snyk_evidence "${KOSLI_HOST_PRODUCTION}"
