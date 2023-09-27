@@ -1,9 +1,13 @@
 FROM ruby:alpine3.18
 LABEL maintainer=jon@jaggersoft.com
 
+#Update curl for https://scout.docker.com/vulnerabilities/id/CVE-2023-38039
+#Update procps for https://scout.docker.com/vulnerabilities/id/CVE-2023-4016
 RUN apk --update --upgrade --no-cache add \
     bash \
-    tini
+    tini \
+    procps \
+    curl
 
 WORKDIR /app
 COPY Gemfile .
