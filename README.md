@@ -1,3 +1,5 @@
+This repo is no longer in use and is Archived. 
+
 [![Github Action (main)](https://github.com/cyber-dojo/ruby-base/actions/workflows/main.yml/badge.svg)](https://github.com/cyber-dojo/ruby-base/actions)
 
 # cyberdojo/ruby-base docker image
